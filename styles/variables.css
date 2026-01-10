@@ -2,3 +2,184 @@
   Переменные для вашего проекта
   и их переопределение под различные устройства
 */
+
+.page {
+  --bg-image: url(../images/cover-image-dark.png);
+  --bg-color: #000028;
+  --accent-color: #FF0070;
+  --text-color: #F1B2CE;
+}
+
+:root {
+  --bg-image: none;
+  --bg-color: #fff1f7;
+  --text-color: #353430;
+  --accent-color: #ff8dcb;
+  --theme-color: #353430;
+}
+
+/* мобильные (основной макет 375 × 668) */
+@media screen and (max-width: 375px) {
+  .page {
+    width: 100vw;
+    overflow-x: hidden;
+  }
+}
+
+@media (max-width: 767px) {
+  .cover__title {
+    font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  }
+}
+
+@media (max-width: 767px) {
+  .gallery__list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* планшет и десктоп */
+@media (min-width: 768px) {
+  .cover__title {
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+
+  .header {
+    min-height: 100vh;
+    padding: 0;
+    /*grid-template-rows: 46px min-content 1fr;*/
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr;
+    gap: 65px 0; /* Вертикальный gap 65px между REC/theme и "no focus" */
+  }
+
+  .header__rec {
+    padding-top: 20px;
+    padding-right: 48px;
+    margin-inline-end: 0;
+  }
+
+  .header__rec::before {
+    top: 28px;
+    inset-inline-end: 29px;
+  }
+
+  .header__theme-menu {
+    margin-inline-end: 20px;
+    justify-self: end;
+    align-self: center;
+  }
+
+  .decorated-zone::before {
+  top: 20px;
+  right: 20px;
+  }
+
+  .decorated-zone::after {
+  bottom: 20px;
+  left: 20px;
+  }
+
+  .cover__title {
+    justify-self: start;
+
+  }
+  
+  .cover__description {
+    max-inline-size: 364px;
+  }
+
+  .title-decor {
+    /* отступ справа = 20px (10 базовых + 10 доп. к планшету) */
+    margin-inline-end: 20px;
+    margin-bottom: 183px;
+  }
+
+  .section {
+    grid-template-columns: 1fr 1fr;
+    padding-inline: 20px;
+  }
+  .section__header { 
+    grid-column: 1; 
+  }
+
+  .section__content { 
+    grid-column: 2; 
+  }
+
+  .section--spacing-normal { 
+  padding-block-start: 60px; 
+  }
+
+  .section--spacing-extra  { 
+  padding-block-start: 80px; 
+  padding-block-end: 0; 
+  }
+
+  .section__special {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+
+  .section__header__special {
+    text-align: left;
+  }
+
+  .section__content__special {
+    
+  }
+
+  .gallery {
+    max-width: none;
+    padding: 40px 80px;
+  }
+  
+  .gallery__list {
+    grid-template-columns: 1fr;
+  }
+  
+  .gallery__item:nth-child(1) .gallery__image,
+  .gallery__item:nth-child(3) .gallery__image {
+    height: 200px;
+  }
+  
+  .gallery__item:nth-child(2) .gallery__image,
+  .gallery__item:nth-child(4) .gallery__image {
+    height: 240px;
+  }
+
+}
+
+@media (min-width: 1024px) {
+  .cover__description {
+    max-inline-size: 491px;
+  }
+
+  .header {
+    grid-template-rows: min-content 1fr min-content;
+    align-content: start;
+  }
+
+  .header__theme-menu {
+    grid-row: 1;
+    margin-block-start: 20px;
+    margin-block-end: 0;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .header__theme-menu-list {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .cover__title {
+    justify-self: center;
+    margin-bottom: 114px;
+  }
+
+  .title-decor {
+    /* ширина блока меняется относительно планшета */
+    max-inline-size: 491px;
+  }
+}

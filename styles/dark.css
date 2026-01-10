@@ -10,3 +10,17 @@
     чем стили в медиазапросе предпочтений пользователя
   */
 }
+
+.page.theme-dark {
+  --bg-image: url(../images/cover-image-dark.png);
+  --bg-color: #000028;
+  --text-color: #f1b2ce;
+  --title-color: #db00ff; 
+  --accent-color: #ff0070; 
+  --theme-color: #ff0070;
+  --accent-color-soft: rgba(255, 0, 112, 0.4);
+}
+
+.page.theme-dark .header__rec {
+  display: inline-block;
+}
