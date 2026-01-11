@@ -3,39 +3,28 @@
 .page {
   /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   background-color: var(--bg-color);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   max-width: 100%;
   overflow-x: hidden;
-  box-sizing: border-box;
-  /*background-color: var(--bg-color);
-  color: var(--text-color);
-  background-image: var(--bg-image);
-  background-size: cover;
-  background-repeat: no-repeat;*/
+  min-height: 100vh;
 }
 
 .header {
-  /*background-image: var(--bg-image);
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  min-height: 668px;
-  display: grid;
-  grid-template-rows: 1fr min-content 1fr;
-  align-content: space-between;
-  grid-template-columns: 1fr;
-  box-sizing: border-box;
-  padding-inline: 10px;*/
   background-image: var(--bg-image);
   background-size: cover;
   background-position: center;
-  min-height: 668px;
+  min-height: 100vh;
+  height: clamp(668px, calc(444.8px + 60.27vw), 1024px);
+  max-height: clamp(668px, 90dvh, 1024px);
   display: grid;
-  grid-template-rows: 36px min-content 1fr;
-  padding-inline: 10px;
+  grid-template-rows: 46px 1fr 1fr 1fr;
+  grid-template-columns: repeat(10, calc(100% / 10));
+  row-gap: 0;
   position: relative;
 }
 
@@ -94,6 +83,21 @@
 
 /* REC */
 .header__rec {
+  /*font-size: 18px;
+  font-family: "IBM Plex Mono", monospace;
+  line-height: 1.3;
+  color: var(--accent-color);
+  text-transform: uppercase;
+  display: none;
+  position: relative;
+  padding-top: 10px;
+  padding-right: 28px;
+  width: fit-content;
+  box-sizing: border-box;
+  align-self: center;
+  justify-self: end;*/
+  grid-column: 9 / 11;
+  grid-row: 1;
   font-size: 18px;
   font-family: "IBM Plex Mono", monospace;
   line-height: 1.3;
@@ -126,21 +130,19 @@
 }
 
 .header__theme-menu {
+  grid-column: 9 / 11;
+  grid-row: 2;
   display: block;
-  width: fit-content;
-  margin-left: auto;
-  margin-inline-end: 0;
-  margin-block: 39px 65px;
+  margin-top: 39px;
   width: 70px;
 }
 
 .header__theme-menu-list {
-  display: flex;
-  flex-direction: column; 
-  list-style: none;
+  grid-column: 9 / 11;
+  grid-row: 2;
+  display: block;
+  width: auto;
   margin: 0;
-  padding: 0;
-  gap: 4px;
   /*margin: 75px 10px 65px;*/
 }
 
@@ -155,8 +157,9 @@ button {
 }
 
 .header__theme-menu-button {
-  height: 26px;
   /*padding: 4px 12px;*/
+  height: 26px;
+  width: 70px;
   border: none;
   background: transparent;
   color: var(--accent-color);
@@ -169,7 +172,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 100%;  
 }
 
 .header__theme-menu-button_type_light {
@@ -205,8 +208,8 @@ button {
 }
 
 .cover__title {
-  justify-self: start;
-  margin-inline-start: 0;
+  grid-column: 1/11;
+  grid-row: 3;
   text-align: left;
   font-family: 'IBM Plex Mono', monospace;
   font-size: clamp(7.25rem, 5.7694rem + 6.3174vw, 9.8125rem);
@@ -215,12 +218,18 @@ button {
   text-transform: lowercase;
   color: var(--title-color);
   text-shadow: 4px 4px 0 var(--accent-color);
+  padding-inline: clamp(0px, calc(10px - max(0px, 100vw - 375px) * 0.02545), 10px);
 }
 
 .cover__description {
-  margin-block-start: 55px;
-  margin-block-end: 66px;
-  margin-inline-start: auto;
+  max-width: clamp(355px, 50vw, 482px);
+  width: clamp(90.66%, 50%, 41.25%);
+  grid-column: 1/11;
+  grid-row: 4;
+  align-self: start;
+  margin-bottom: 66px;
+  margin-inline: clamp(10px, calc(10px + (100vw - 375px) * 0.0254), 20px);
+  box-sizing: border-box;
 }
 
 .title-decor {
@@ -353,9 +362,10 @@ button {
 
 .footer {
   height: 668px;
-   box-sizing: border-box;
-   display: flex;
-   align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .footer__title {

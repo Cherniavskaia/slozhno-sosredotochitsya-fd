@@ -26,7 +26,7 @@
   }
 }
 
-@media (max-width: 767px) {
+/*@media (max-width: 767px) {
   .cover__title {
     font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
   }
@@ -36,21 +36,17 @@
   .gallery__list {
     grid-template-columns: 1fr;
   }
-}
+}*/
 
 /* планшет и десктоп */
 @media (min-width: 768px) {
-  .cover__title {
+  /*.cover__title {
     font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
-  }
+  }*/
 
   .header {
     min-height: 100vh;
     padding: 0;
-    /*grid-template-rows: 46px min-content 1fr;*/
-    grid-template-rows: auto 1fr auto;
-    grid-template-columns: 1fr;
-    gap: 65px 0; /* Вертикальный gap 65px между REC/theme и "no focus" */
   }
 
   .header__rec {
@@ -65,9 +61,9 @@
   }
 
   .header__theme-menu {
-    margin-inline-end: 20px;
+    margin-top: 146px;
     justify-self: end;
-    align-self: center;
+    margin-inline: clamp(10px, calc(10px + (100vw - 375px) * 0.0254), 20px);
   }
 
   .decorated-zone::before {
@@ -82,23 +78,23 @@
 
   .cover__title {
     justify-self: start;
-
+    margin-bottom: 162px;
   }
   
   .cover__description {
-    max-inline-size: 364px;
+    justify-self: end;
+    margin-bottom: 183px;
   }
 
   .title-decor {
-    /* отступ справа = 20px (10 базовых + 10 доп. к планшету) */
-    margin-inline-end: 20px;
-    margin-bottom: 183px;
+
   }
 
   .section {
     grid-template-columns: 1fr 1fr;
     padding-inline: 20px;
   }
+
   .section__header { 
     grid-column: 1; 
   }
@@ -148,38 +144,54 @@
     height: 240px;
   }
 
+  .footer__title {
+  padding-left: 0;
+  }
+
 }
 
 @media (min-width: 1024px) {
+   .cover__title {
+    margin-bottom: 114px;
+    justify-self: start;
+  }
+
   .cover__description {
-    max-inline-size: 491px;
+    margin-bottom: 134px;
   }
 
   .header {
-    grid-template-rows: min-content 1fr min-content;
+    /*grid-template-rows: min-content 1fr min-content;*/
     align-content: start;
   }
 
   .header__theme-menu {
     grid-row: 1;
+    grid-column: 4 / 8;
+    width: 230px;
     margin-block-start: 20px;
-    margin-block-end: 0;
-    margin-left: 50%;
-    transform: translateX(-50%);
+    justify-self: center;
   }
 
   .header__theme-menu-list {
     flex-direction: row;
     gap: 10px;
+    display: flex;
+    justify-content: space-between;
   }
 
-  .cover__title {
-    justify-self: center;
-    margin-bottom: 114px;
+  .header__theme-menu-button {
+    flex: 1;
+    min-width: 70px;
   }
 
-  .title-decor {
-    /* ширина блока меняется относительно планшета */
+  .header__theme-menu-button_type_dark {
+    border: 1px solid var(--accent-color);
+    box-sizing: border-box;
+  }
+
+  /*.title-decor {
+    /* ширина блока меняется относительно планшета 
     max-inline-size: 491px;
-  }
+  }*/
 }
