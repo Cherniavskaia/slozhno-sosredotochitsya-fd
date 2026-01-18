@@ -1,10 +1,17 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
 
 .page {
   /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
   background-color: var(--bg-color);
   background-size: cover;
   background-repeat: no-repeat;
@@ -22,8 +29,8 @@
   height: clamp(668px, calc(444.8px + 60.27vw), 1024px);
   max-height: clamp(668px, 90dvh, 1024px);
   display: grid;
-  grid-template-rows: 46px 1fr 1fr 1fr;
-  grid-template-columns: repeat(10, calc(100% / 10));
+  grid-column: 1;
+  grid-template-rows: 1fr min-content 1fr;
   row-gap: 0;
   position: relative;
 }
@@ -55,59 +62,16 @@
   border-left: 1px solid var(--theme-color);
 }
 
-/*.decorated-zone {
-  position: relative;
-}
-
-.header.decorated-zone::before,
-.header.decorated-zone::after{
-  content: '';
-  position: absolute;
-  width: 25px;
-  height: 25px;
-}
-
-.header.decorated-zone::before {
-  top: 10px;
-  right: 10px;
-  border-top: 1px solid var(--theme-color);
-  border-right: 1px solid var(--theme-color);
-}
-
-.header.decorated-zone::after {
-  bottom: 10px;
-  left: 10px;
-  border-bottom: 1px solid var(--theme-color);
-  border-left: 1px solid var(--theme-color);
-}*/
-
 /* REC */
 .header__rec {
-  /*font-size: 18px;
-  font-family: "IBM Plex Mono", monospace;
-  line-height: 1.3;
-  color: var(--accent-color);
-  text-transform: uppercase;
-  display: none;
-  position: relative;
-  padding-top: 10px;
-  padding-right: 28px;
-  width: fit-content;
-  box-sizing: border-box;
-  align-self: center;
-  justify-self: end;*/
-  grid-column: 9 / 11;
-  grid-row: 1;
   font-size: 18px;
   font-family: "IBM Plex Mono", monospace;
-  line-height: 1.3;
   color: var(--accent-color);
   text-transform: uppercase;
   display: none;
-  position: relative;
-  padding-top: 10px;
-  padding-right: 28px;
-  width: fit-content;
+  position: absolute;
+  top: 10px;
+  right: 38px;
   box-sizing: border-box;
   align-self: center;
   justify-self: end;
@@ -119,9 +83,8 @@
 
 .header__rec::before {
   content: "";
-  position: absolute;
   top: 18px;
-  inset-inline-end: 9px;
+  inset-inline-end: 10px;
   width: 9px;
   height: 9px;
   background-color: var(--accent-color);
@@ -129,21 +92,20 @@
   box-shadow: 0 0 4px 2px var(--accent-color);
 }
 
+/*кнопки*/
 .header__theme-menu {
-  grid-column: 9 / 11;
-  grid-row: 2;
-  display: block;
-  margin-top: 39px;
+  grid-row: 1;
+  margin-left: auto;
+  margin-right: 10px;
+  margin-top: 75px;
   width: 70px;
 }
 
 .header__theme-menu-list {
-  grid-column: 9 / 11;
-  grid-row: 2;
-  display: block;
   width: auto;
-  margin: 0;
-  /*margin: 75px 10px 65px;*/
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .header__theme-menu-item {
@@ -157,7 +119,6 @@ button {
 }
 
 .header__theme-menu-button {
-  /*padding: 4px 12px;*/
   height: 26px;
   width: 70px;
   border: none;
@@ -172,7 +133,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;  
+  width: 100%;
 }
 
 .header__theme-menu-button_type_light {
@@ -208,8 +169,7 @@ button {
 }
 
 .cover__title {
-  grid-column: 1/11;
-  grid-row: 3;
+  grid-row: 2;
   text-align: left;
   font-family: 'IBM Plex Mono', monospace;
   font-size: clamp(7.25rem, 5.7694rem + 6.3174vw, 9.8125rem);
@@ -222,14 +182,12 @@ button {
 }
 
 .cover__description {
-  max-width: clamp(355px, 50vw, 482px);
-  width: clamp(90.66%, 50%, 41.25%);
-  grid-column: 1/11;
-  grid-row: 4;
-  align-self: start;
-  margin-bottom: 66px;
+  max-width: clamp(355px, calc(50vw - 20px), 491px);
+  grid-row: 3;
+  align-self: center;
   margin-inline: clamp(10px, calc(10px + (100vw - 375px) * 0.0254), 20px);
   box-sizing: border-box;
+  transform: translateY(-10px);
 }
 
 .title-decor {
@@ -242,20 +200,20 @@ button {
   width: fit-content;
 }
 
+/*контент*/
 .section {
-  padding-inline: 10px;
+  padding-inline: clamp(10px, calc(10px + (100vw - 375px) * 0.0254), 20px);
   display: grid;
-  gap: 20px;
 }
 
-.section--spacing-normal { 
+.section__spacing-normal { 
   padding-block-start: 40px; 
   padding-block-end: 0; 
 }
 
-.section--spacing-extra  { 
+.section__spacing-extra  { 
   padding-block-start: 50px; 
-  padding-block-end: 0; 
+  padding-block-end: 0;
 }
 
 .section__header { 
@@ -264,21 +222,13 @@ button {
 
 .section__content { 
   display: grid; 
-  gap: 20px; 
-}
-
-.section__header__special {
-  grid-column: 1;
-}
-
-.section__content__special {
-  display: grid;
-  gap: 20px;
-  grid-column: 1 / -1;
 }
 
 .section__title,
-.section__subtitle {
+.section__subtitle,
+.section__subtitle_generic,
+.section__subtitle__bullet,
+.section__subtitle__gallery {
   font-family: 'IBM Plex Mono', monospace;
   font-weight: 700;
   font-size: 18px;
@@ -292,19 +242,34 @@ button {
 .section__subtitle {
   background-color: var(--accent-color);
   color: var(--bg-color);
+  margin-top: 20px;
+  margin-bottom: 10px;
+  outline: 2px solid #30d5c8; 
 }
 
-.section__content__subtitle {
+.section__subtitle_generic {
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+.section__title__bullet {
+  color: var(--accent-color);
+}
+
+.section__subtitle__bullet {
   background-color: var(--accent-color);
   color: var(--bg-color);
   font-family: 'IBM Plex Mono', monospace;
   font-weight: 400;
   font-size: 18px;
   line-height: 23.4px;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 .section__text {
-  /*max-width: 35rem;*/
   width: 100%;
   max-width: none;
   color: var( --text-color);
@@ -313,6 +278,12 @@ button {
   line-height: 1.3;
   letter-spacing: 0;
   font-size: 18px;
+  outline: 2px solid #19ff19; 
+}
+
+.section__content__special {
+  display: grid;
+  grid-column: 1 / -1;
 }
 
 .content__link {
@@ -335,9 +306,19 @@ button {
   text-decoration: none;
 }
 
+/*галерея*/
 .gallery {
-  max-width: 375px;
-  margin: 0;
+  max-width: 100%;
+  margin-bottom: 40px;
+  display: grid;
+  grid-template-columns: span 3;
+}
+
+.section__subtitle__gallery {
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+  margin-top: 0;
+  margin-bottom: 10px;
 }
 
 .gallery__list {
@@ -345,7 +326,8 @@ button {
   padding: 0;
   margin: 0;
   display: grid;
-  gap: 20px;
+  grid-template-columns: span 3;
+  gap: 10px;
 }
 
 .gallery__item {
@@ -354,12 +336,12 @@ button {
 
 .gallery__image {
   width: 100%;
-  height: 200px;
+  height: 100%;
   object-fit: cover;
   display: block;
 }
 
-
+/*подвал*/
 .footer {
   height: 668px;
   box-sizing: border-box;
